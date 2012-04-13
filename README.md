@@ -4,7 +4,7 @@ Rack::Reproxy
 Allow Rack responses to be proxied from a different URL. It's like
 Rack::Sendfile, but for any HTTP backend.
 
-Rack apps can return a URI as a response body (or an `X-Reproxy-Url` header)
+Rack apps can return a `URI` as a response body (or an `X-Reproxy-Url` header)
 and we pass it upstream to Nginx/Apache/Lighttpd to serve.
 
 This is an approach pioneered by MogileFS using perlbal to reproxy file
@@ -60,7 +60,7 @@ In config.ru
 use Rack::Reproxy::Apache
 ```
 
-Apache config
+Apache config. Requires the [mod_reproxy](https://github.com/jamis/mod_reproxy) module.
 
     <Location />
       AllowReproxy on
