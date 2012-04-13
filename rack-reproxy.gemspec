@@ -4,6 +4,7 @@ Gem::Specification.new do |s|
   s.author  = 'Jeremy Kemper'
   s.email   = 'jeremy@bitsweat.net'
   s.summary = 'Your Rack app can redispatch a response to a different URL, kind of like doing an internal redirect.'
+  s.license = 'MIT'
 
   s.required_ruby_version = '>= 1.9'
 
