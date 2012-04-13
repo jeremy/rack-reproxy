@@ -39,7 +39,7 @@ Nginx
 In config.ru
 
 ```ruby
-  use Rack::Reproxy::Nginx, location: '/reproxy'
+use Rack::Reproxy::Nginx, location: '/reproxy'
 ```
 
 Nginx config
@@ -57,7 +57,7 @@ Apache with mod\_reproxy
 In config.ru
 
 ```ruby
-  use Rack::Reproxy::Apache
+use Rack::Reproxy::Apache
 ```
 
 Apache config
@@ -74,7 +74,7 @@ Lighttpd
 In config.ru
 
 ```ruby
-  use Rack::Reproxy::Lighttpd
+use Rack::Reproxy::Lighttpd
 ```
 
 Lighttpd config
@@ -92,8 +92,8 @@ when you do something like reproxy through Rack::Cache.
 In config.ru
 
 ```ruby
-  use Rack::Reproxy::Rack
+use Rack::Reproxy::Rack
 
-  # To proxy to a different Rack app:
-  use Rack::Reproxy::Rack, app: SomeInternalApp.new
+# To proxy to a different Rack app
+use Rack::Reproxy::Rack, app: SomeInternalApp.new
 ```
