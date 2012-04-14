@@ -1,4 +1,4 @@
-Rack::Reproxy
+Rack::Reproxy [![Build Status](https://secure.travis-ci.org/jeremy/rack-reproxy.png)](http://travis-ci.org/jeremy/rack-reproxy)
 =============
 
 Allow Rack responses to be proxied from a different URL. It's like
