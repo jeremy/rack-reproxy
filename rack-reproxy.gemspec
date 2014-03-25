@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name    = 'rack-reproxy'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.author  = 'Jeremy Kemper'
   s.email   = 'jeremy@bitsweat.net'
-  s.summary = 'Your Rack app can redispatch a response to a different URL, kind of like doing an internal redirect.'
+  s.summary = 'Redispatch your response via another URL. Like a transparent, internal HTTP redirect.'
   s.license = 'MIT'
 
   s.required_ruby_version = '>= 1.9'
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack'
 
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'minitest', '~> 5.3'
 
-  s.files = Dir["#{File.dirname(__FILE__)}/**/*"]
+  s.files = Dir["#{File.dirname(__FILE__)}/lib/**/*"]
 end

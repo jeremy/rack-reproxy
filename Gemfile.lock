@@ -1,20 +1,20 @@
 PATH
   remote: .
   specs:
-    rack-reproxy (1.0.0)
+    rack-reproxy (1.0.1)
       rack
 
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (2.12.1)
-    rack (1.4.1)
-    rake (0.9.2.2)
+    minitest (5.3.1)
+    rack (1.5.2)
+    rake (10.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest
+  minitest (~> 5.3)
   rack-reproxy!
   rake

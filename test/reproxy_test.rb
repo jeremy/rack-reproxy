@@ -1,11 +1,10 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'minitest/unit'
-MiniTest::Unit.autorun
+require 'minitest/autorun'
 
 require 'rack/reproxy'
 
-class ReproxyTest < MiniTest::Unit::TestCase
+class ReproxyTest < Minitest::Test
   def setup
     @app = ->(env) { [200, { 'X-Reproxy-Url' => uri }, URI(uri)] }
   end
