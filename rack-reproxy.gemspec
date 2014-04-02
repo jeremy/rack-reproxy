@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name    = 'rack-reproxy'
-  s.version = '1.0.1'
+  s.version = '1.1.0'
   s.author  = 'Jeremy Kemper'
-  s.email   = 'jeremy@bitsweat.net'
+  s.email   = 'jeremykemper@gmail.com'
   s.summary = 'Redispatch your response via another URL. Like a transparent, internal HTTP redirect.'
   s.license = 'MIT'
 

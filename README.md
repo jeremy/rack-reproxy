@@ -86,12 +86,14 @@ Rack
 ----
 
 Wait, what? Yeah, you can reproxy without doing an HTTP roundtrip by
-immediately redispatching back to your own app. This only becomes useful
-when you do something like reproxy through Rack::Cache.
+immediately redispatching back to your own app. This becomes useful
+when you do something like reproxy through Rack::Cache or want to
+emulate your nginx/apache reproxies in dev/test with Rack only.
 
 In config.ru
 
 ```ruby
+# To proxy to self
 use Rack::Reproxy::Rack
 
 # To proxy to a different Rack app
