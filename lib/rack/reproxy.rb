@@ -147,7 +147,7 @@ module Rack
     class Rack < Middleware
       def initialize(app, options = {})
         super
-        @proxy_to = options.fetch(:app, app)
+        @proxy_to = options.fetch(:app, self)
       end
 
       private

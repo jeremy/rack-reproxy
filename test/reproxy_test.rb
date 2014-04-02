@@ -55,7 +55,9 @@ class ReproxyTest < Minitest::Test
     assert_equal '/bar?a=b', headers['X-Rewrite-URI']
     assert_equal [], body
   end
+end
 
+class RackReproxyTest < Minitest::Test
   def test_reproxies_to_rack
     app   = ->(env) { [200, { 'foo' => 'a', 'bar' => 'baz', 'X-Reproxy-Url' => 'http://foo/bar?a=b' }, ['original']] }
     proxy = ->(env) { [204, { 'foo' => 'bar' }, env.values_at('HTTP_X_REPROXIED', 'HTTP_HOST', 'PATH_INFO', 'QUERY_STRING', 'HTTP_X_REPROXY_URL')] }
@@ -71,5 +73,21 @@ class ReproxyTest < Minitest::Test
     proxy = ->(env) { [200, {}, env.values_at('SCRIPT_NAME', 'PATH_INFO')] }
     status, headers, body = Rack::Reproxy::Rack.new(app, app: proxy).call({ 'SCRIPT_NAME' => '/bar' })
     assert_equal ['/bar', '/baz'], body
+  end
+
+  def test_chained_reproxy
+    app = ->(env) do
+      case env['PATH_INFO']
+      when '/one'
+        [200, { 'X-Reproxy-Url' => 'http://foo/two' }, []]
+      when '/two'
+        env['HTTP_X_REPROXIED'] = nil
+        [200, { 'X-Reproxy-Url' => 'http://foo/three' }, []]
+      else
+        [200, {}, env['PATH_INFO']]
+      end
+    end
+    status, headers, body = Rack::Reproxy::Rack.new(app).call({ 'PATH_INFO' => '/one' })
+    assert_equal '/three', body
   end
 end
