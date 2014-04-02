@@ -154,9 +154,14 @@ module Rack
       def reproxy(env, status, headers, body)
         uri = URI(headers.delete(@header))
 
+        path_info = uri.path
+        if script_name = env['SCRIPT_NAME']
+          path_info.sub! /\A#{Regexp.escape(script_name)}/, ''
+        end
+
         proxy_env = env.merge 'HTTP_X_REPROXIED' => '1',
           'HTTP_HOST'     => uri.host,
-          'PATH_INFO'     => uri.path,
+          'PATH_INFO'     => path_info,
           'QUERY_STRING'  => uri.query
 
         proxied_status, proxied_headers, proxied_body = @proxy_to.call(proxy_env)

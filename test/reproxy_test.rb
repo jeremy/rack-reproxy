@@ -65,4 +65,11 @@ class ReproxyTest < Minitest::Test
     assert_equal 'baz', headers['bar']
     assert_equal ['1', 'foo', '/bar', 'a=b', nil], body
   end
+
+  def test_respects_existing_script_name
+    app   = ->(env) { [200, { 'X-Reproxy-Url' => 'http://foo/bar/baz' }, ['original']] }
+    proxy = ->(env) { [200, {}, env.values_at('SCRIPT_NAME', 'PATH_INFO')] }
+    status, headers, body = Rack::Reproxy::Rack.new(app, app: proxy).call({ 'SCRIPT_NAME' => '/bar' })
+    assert_equal ['/bar', '/baz'], body
+  end
 end
