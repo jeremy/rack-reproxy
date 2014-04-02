@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9'
 
-  s.add_dependency 'rack'
+  s.add_runtime_dependency 'rack'
 
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rake', '~> 10.2'
   s.add_development_dependency 'minitest', '~> 5.3'
 
-  s.files = Dir["#{File.dirname(__FILE__)}/lib/**/*"]
+  s.files = Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"]
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rack-reproxy (1.0.1)
+    rack-reproxy (1.1.0)
       rack
 
 GEM
@@ -9,7 +9,7 @@ GEM
   specs:
     minitest (5.3.1)
     rack (1.5.2)
-    rake (10.2.0)
+    rake (10.2.2)
 
 PLATFORMS
   ruby
@@ -17,4 +17,4 @@ PLATFORMS
 DEPENDENCIES
   minitest (~> 5.3)
   rack-reproxy!
-  rake
+  rake (~> 10.2)
